@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog title="Confirmation">
+		<content>
+			<Text text="Are You Sure ? Press ESC button to close " />
+		</content>
+
+		<buttons>
+			<Button text="Yes" press="onPopupYes" />
+			<Button text="No" press="onPopupNo" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

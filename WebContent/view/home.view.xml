@@ -1,0 +1,112 @@
+<mvc:View controllerName="gautam.app.controller.home"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Shell>
+		<App id="app">
+			<pages>
+				<Page title="{i18n>appTitle}">
+
+					<Button text="List" press="funcListBtn" width="125px"
+						class=" sapUiSmallMarginBeginEnd" />
+
+					<f:SimpleForm id="id-simple-form" editable="true"
+						layout="ColumnLayout">
+
+						<Label text="First name" />
+						<Input value="{viewModel>/formData/fname}"
+							valueState="{= ${viewModel>/formData/fname} === '' ? 'Error' : 'Success'}" />
+
+						<Label text="Last name" />
+						<Input value="{viewModel>/formData/lname}"
+							valueState="{= ${viewModel>/formData/lname} === '' ? 'Error' : 'Success'}" />
+
+						<Label text="Gender" />
+						<RadioButtonGroup select="onSelectRad"
+							columns="3" selectedIndex="0">
+							<RadioButton text="Male" />
+							<RadioButton text="Female" />
+							<RadioButton text="Other" />
+						</RadioButtonGroup>
+
+						<Label text="Number" />
+						<Input value="{viewModel>/formData/number}" type="Number" />
+
+						<Label text="Date Of Birth" labelFor="DP2" />
+						<DatePicker id="DP2" valueFormat="yyyy-MM-dd"
+						value="{viewModel>/formData/dob}"
+							displayFormat="long" change="handleChange" />
+
+						<Label text="Mobile" />
+						<Input value="{viewModel>/formData/mobile}" type="Tel"
+							valueState="{= isNaN(${viewModel>/formData/mobile}) ? 'Error' : 'Success'}" />
+
+
+
+						<Button text="{i18n>submitBtn}" press="fOnclick" />
+						<Button text="{i18n>clearBtn}" press="fClearData" />
+
+					</f:SimpleForm>
+
+					<Table items="{viewModel>/Table}"
+						delete="handleDeleteListItem">
+
+						<columns>
+
+							<Column>
+								<Label text="frist name" />
+							</Column>
+
+							<Column>
+								<Label text="Last name" />
+							</Column>
+
+							<Column>
+								<Label text="DOB" />
+							</Column>
+
+							<Column>
+								<Label text="Age(Formatted Output)" />
+							</Column>
+
+
+							<Column>
+								<Label text="Gender" />
+							</Column>
+
+
+							<Column>
+								<Label text="Number" />
+							</Column>
+
+							<Column>
+								<Label text="Mobile" />
+							</Column>
+
+
+
+						</columns>
+
+						<items>
+
+							<ColumnListItem type="Active"
+								press="onTblRowClick">
+								<cells>
+									<Text text="{viewModel>fname}" />
+									<Text text="{viewModel>lname}" />
+									<Text text="{viewModel>dob}" />
+									<Text
+										text="{ parts: [{path : 'viewModel>dob'}],  formatter: '.formatter.dateToYear' }" />
+									<Text text="{viewModel>gender}" />
+									<Text text="{viewModel>number}" />
+									<Text text="{viewModel>mobile}" />
+								</cells>
+							</ColumnListItem>
+
+						</items>
+					</Table>
+
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

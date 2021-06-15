@@ -1,0 +1,65 @@
+<mvc:View controllerName="gautam.app.controller.lists"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+
+	<Page title="List Page" showNavButton="true"
+		navButtonPress="fOnBack">
+
+		<Table items="{viewModel>/Table}" delete="handleDeleteListItem">
+
+			<columns>
+
+				<Column>
+					<Label text="frist name" />
+				</Column>
+
+				<Column>
+					<Label text="Last name" />
+				</Column>
+
+				<Column>
+					<Label text="DOB" />
+				</Column>
+
+				<Column>
+					<Label text="Age(Formatted Output)" />
+				</Column>
+
+
+				<Column>
+					<Label text="Gender" />
+				</Column>
+
+
+				<Column>
+					<Label text="Number" />
+				</Column>
+
+				<Column>
+					<Label text="Mobile" />
+				</Column>
+
+
+
+			</columns>
+
+			<items>
+
+				<ColumnListItem type="Active" press="onTblRowClick">
+					<cells>
+						<Text text="{viewModel>fname}" />
+						<Text text="{viewModel>lname}" />
+						<Text text="{viewModel>dob}" />
+						<Text
+							text="{ parts: [{path : 'viewModel>dob'}],  formatter: '.formatter.dateToYear' }" />
+						<Text text="{viewModel>gender}" />
+						<Text text="{viewModel>number}" />
+						<Text text="{viewModel>mobile}" />
+					</cells>
+				</ColumnListItem>
+
+			</items>
+		</Table>
+
+	</Page>
+
+</mvc:View>
